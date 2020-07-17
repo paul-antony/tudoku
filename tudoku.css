@@ -1,0 +1,115 @@
+
+    @font-face { 
+        font-family: rezland; 
+        src: url('REZ.ttf'); 
+    }
+
+
+body{
+    background-color: #A8D0E6
+}
+section {
+    text-align: center;
+}
+
+
+.game--title{
+    font-family: rezland;
+    margin-top: 20px;
+    margin-bottom: 10;
+    font-size: 50px;
+    text-shadow: 3px 0px 2px #90877F;
+}
+.game--container {
+    display: grid;
+    grid-template-columns: repeat(9, auto);
+    width: 460px;
+    margin: 10px auto;
+}
+
+
+.game--column {
+    display: grid;
+    grid-template-rows: repeat(9, auto);
+    width: 50px;
+    cursor: pointer;
+
+}
+
+.cell {
+    width: 49px;
+    height: 49px;
+
+    
+    box-shadow: 0 0 0 1px #333333;
+    border: 1px solid #333333;
+    border-radius: 15%;
+
+    font-family: "Permanent Marker", cursive;
+    line-height: 50px;
+    font-size: 50px;
+    background-color: white;
+
+}
+
+.del--cell{
+    background-color: firebrick;
+}
+
+
+.next--number {
+    font-family: "Permanent Marker", cursive;
+    width: 50px;
+    height: 50px;
+    box-shadow: 0 0 0 1px #333333;
+    border: 1px solid #333333;
+    border-radius: 15%;
+    line-height: 50px;
+    font-size: 50px;
+    margin: 20px auto;
+    background-color: white;
+
+
+}
+
+.game--column > .cell {
+    pointer-events: none;
+  }
+
+
+
+
+
+
+  .btn {
+    background: #EEE;
+    border: 1px solid #B4B4B4;
+    position: relative;
+    box-sizing: border-box;
+    display: inline-block;
+    border-radius: .4em;
+    cursor: pointer;
+    box-shadow: 0 1px 1px rgba(0,0,0,.2),
+                0 4px 0 0 rgba(255,255,255,.7) inset,
+                3px 3px rgba(0,0,0,.5);
+    text-align: center;
+    line-height: 50px;
+    color: #333;
+    font-family: Consolas;
+    font-weight: 700;
+    overflow: hidden;
+    font-size: 1.4em;
+    transition-duration: .2s;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+.btn:hover {
+    filter: brightness(98%);
+}
+
+.btn.focus {
+    filter: brightness(85%);
+    box-shadow: 0 4px 1px rgba(0,0,0,.2) inset,
+                1px 1px rgba(0,0,0,0.5);
+}
