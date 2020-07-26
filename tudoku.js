@@ -171,6 +171,15 @@ function check_box(row,col){
 
 }
 
+function check_game_over(){
+    let flag = true;
+    for (let i = 0; i < col_top_index.length; i++) {
+        if(col_top_index[i] != -1){
+            flag = false;
+        }
+    }
+    return flag
+}
 
 function check_game_state(row=-1,col=-1,flag=1){
 
@@ -234,8 +243,17 @@ function update_display(){
             x.className = "cell";
             x.innerHTML = game_state[i][j] === 0 ? "":Math.abs(game_state[i][j]);
 
+        }
+    }
+
+    for (let i=0; i < 9; i++){
+        for (let j=0; j < 9; j++){
+            x = document.querySelector(`div[data-cell-index="${i}${j}"]`);
             if(game_state[i][j] < 0){
                 x.classList.add("del--cell")
+            }
+            else if (game_state[i][j] > 0){
+                x.classList.add("cell--active")
             }
         }
     }

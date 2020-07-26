@@ -7,15 +7,15 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
     <link rel="stylesheet" href="tudoku.css">
-
+    <link rel="stylesheet" href="font.css">
     <title>Tudoku</title>
 
 
 </head>
 <body>
     <section>
-        <div class="game--title">Tudoku</div>
-        <div class="game--container">
+        <div class="game--title" id="game--board">Tudoku</div>
+        <div class="game--board">
             <div data-col-index="0" class="game--column">
                 <div data-cell-index="00" class="cell"></div>
                 <div data-cell-index="10" class="cell"></div>
@@ -118,9 +118,10 @@
 
         </div>
         <div class = "next--number"> </div>
-        <h2 class="game--status"></h2>
-        <button class="btn" id="game--restart">Restart Game</button>
+
+        <div class="btn" id="game--help"><i style="color: black; font-size: 50px;" class="icon-question" aria-hidden="true"></i></div>
+        <div class="btn" id="game--restart"> <i style="color: black; font-size: 45px; margin-top:2px" class="icon-repeat" aria-hidden="true"></i> </div>
+        <div class="btn" id="game--level"> <i style="color: black; font-size: 45px;" class=" icon-sliders" aria-hidden="true"></i> </div>
     </section>
 </body>
-
     <script src="tudoku.js"></script>
