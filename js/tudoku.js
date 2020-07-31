@@ -90,6 +90,7 @@ function check_row(row){
 
     let flag = [0,0,0,0,0,0,0,0,0]
 
+    //count of occurance of each number
     for (let i = 0; i < 9; i++){
         if (game_state[row][i] === 0){
             return false;
@@ -97,12 +98,14 @@ function check_row(row){
         flag[Math.abs(game_state[row][i]) -1 ]++;
     }
 
+    //check is all count are 1
     for (let i = 0; i < 9; i++){
         if(flag[i] === 0 || flag[i] > 1){
             return false;
         }
     }
-    console.log("row check true");
+    
+    console.log("row check true",row);
     //set delete value to -ve
     for (let i = 0; i < 9; i++){
         game_state[row][i] = -1 * Math.abs(game_state[row][i]);
@@ -113,41 +116,44 @@ function check_row(row){
 
 function check_col(col){
 
+    // column is not full
     if (game_state[0][col] === 0){
         return false;
     }
 
     let flag = [0,0,0,0,0,0,0,0,0];
 
-    for (let i = 0; i < 9; i++){
-        if (game_state[i][col] === 0){
-            return false;
-        }
-        
+    //count of occurance of each number
+    for (let i = 0; i < 9; i++){        
         flag[Math.abs(game_state[i][col]) -1 ]++;
     }
 
+    //check is all count are 1
     for (let i = 0; i < 9; i++){
         if(flag[i] === 0 || flag[i] > 1){
             return false;
         }
-    console.log("col check true");
+    }
+
+    console.log("col check true",col);
+    //set delete value to -ve
     for (let i = 0; i < 9; i++){
         game_state[i][col] = -1 * Math.abs(game_state[i][col]);
     }
-    return true
-    }   
+    return true   
 }
 
 //checks 3*3 sub-square where row,col is 0,0 of sub-square; 
 //if subsquare not possible return false 
 function check_box(row,col){
+
+    // wont check if cube is not possible
     if (row > 6 || col > 6){
         return false;
     }
 
     let flag = [0,0,0,0,0,0,0,0,0];
-
+    //count of occurance of each number
     for (let i = 0; i < 3; i++){
         for (let j = 0; j < 3; j++){
             if (game_state[i+row][j+col] === 0){
@@ -159,19 +165,20 @@ function check_box(row,col){
         }
     }
 
-
+    //check is all count are 1
     for (let i = 0; i < 9; i++){
         if(flag[i] === 0 || flag[i] > 1){
             return false;
         }
-    console.log("square check true");
+    }
+    console.log("square check true",row,col);
+    //set delete value to -ve
     for (let i = 0; i < 3; i++){
         for (let j = 0; j < 3; j++){
             game_state[i+row][j+col] = -1 *Math.abs(game_state[i+row][j+col]);
         }
     }
-    return true
-    }  
+    return true  
 
 }
 
