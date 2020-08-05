@@ -12,6 +12,19 @@ var time_gap = 500;
 const next_number_display = document.querySelector('.next--number');
 
 
+function on(clickedEventelement) {
+    let button_id = clickedEventelement.target.getAttribute('id');
+    //console.log(`${button_id}--overlay`)
+    document.getElementById(`${button_id}--overlay`).style.display = "block";
+  }
+  
+  function off() {
+    document.getElementById("game--help--overlay").style.display = "none";
+    document.getElementById("game--level--overlay").style.display = "none";
+    document.getElementById("game--end--overlay").style.display = "none";
+  }
+
+
 function random_uniform_int(min,max,top){
     min = Math.floor(min);
     max = Math.floor(max) - min;
@@ -65,13 +78,13 @@ function restart_game(){
 }
 
 
-function sleep(milliseconds) {
-    const date = Date.now();
-    let currentDate = null;
-    do {
-      currentDate = Date.now();
-    } while (currentDate - date < milliseconds);
-  }
+// function sleep(milliseconds) {
+//     const date = Date.now();
+//     let currentDate = null;
+//     do {
+//       currentDate = Date.now();
+//     } while (currentDate - date < milliseconds);
+//   }
 
 
 function set_next_number(){
@@ -189,7 +202,10 @@ function check_game_over(){
             flag = false;
         }
     }
-    return flag
+    if (flag === true){
+        game_active = false;
+        document.getElementById("game--end--overlay").style.display = "block";
+    }
 }
 
 function check_game_state(row=-1,col=-1,flag=1){
@@ -243,7 +259,7 @@ function check_game_state(row=-1,col=-1,flag=1){
 }
 
 function update_display(board){
-    console.log(board);
+    //console.log(board);
 
     if (next_number === 0){
         next_number_display.innerHTML = "";
@@ -274,7 +290,6 @@ function update_display(board){
 }
 
 function clean_board(count){
-    //sleep(3000);
     //console.log(JSON.parse(JSON.stringify(game_state)));
     //console.log( count * time_gap);
     setTimeout(update_display , count * time_gap, JSON.parse(JSON.stringify(game_state)));
@@ -287,7 +302,6 @@ function clean_board(count){
     }
 
     setTimeout(update_display ,  (count + 1) * time_gap, JSON.parse(JSON.stringify(game_state)));
-    //sleep(3000);
     //console.log(JSON.parse(JSON.stringify(game_state)));
     for (let j = 0; j<9; j++){
         let k = 8;
@@ -320,6 +334,7 @@ function board_check(row,col){
         if (count ==1){
             game_active = true;
             set_next_number();
+            check_game_over();
         }
         else{
             setTimeout(() => {
@@ -351,7 +366,6 @@ function handle_click(clickedCellEvent) {
     next_number = 0;
     update_display(JSON.parse(JSON.stringify(game_state)));
     //console.log(JSON.parse(JSON.stringify(game_state)));
-    //sleep(5000);
     game_active = false;
     board_check(row_id,column_id);
     set_next_number();
@@ -360,7 +374,15 @@ function handle_click(clickedCellEvent) {
 update_display(JSON.parse(JSON.stringify(game_state)));
 set_next_number();
 document.querySelectorAll('.game--column').forEach(cell => cell.addEventListener('click', handle_click));
-document.querySelector('#game--restart').addEventListener('click', restart_game);
+
+
+document.querySelectorAll('#game--restart').forEach(button => button.addEventListener('click', restart_game));
+
+
+// button add listner
+//document.querySelector('#game--restart').addEventListener('click', restart_game);
+document.querySelector('#game--help').addEventListener('click', on);
+document.querySelector('#game--level').addEventListener('click', on);
 
 
 
