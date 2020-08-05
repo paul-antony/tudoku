@@ -202,3 +202,47 @@ section {
   .btn > .icon-sliders {
     pointer-events: none;
   }
+
+
+
+  
+  
+  .slider {
+    -webkit-appearance: none;
+        width: 90%;
+        height: 15px;
+        border-radius: 5px;
+        background: gray;
+        outline: none;
+        opacity: 0.7;
+        -webkit-transition: opacity .15s ease-in-out;
+        transition: opacity .15s ease-in-out;
+        margin-top: 5px;
+        margin-bottom: 5px;
+    }
+    
+    .slider:hover {
+      opacity: 1;
+    }
+    
+    .slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: #A8D0E6;
+      box-shadow: 0 1px 1px rgba(0,0,0,.2),
+      3px 3px rgba(0,0,0,.5);
+      cursor: pointer;
+    }
+    
+    .slider::-moz-range-thumb {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: #A8D0E6;
+      border: .5px solid black;
+      box-shadow: 0 0 0 1px #1a1919;
+      cursor: pointer;
+    }

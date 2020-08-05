@@ -67,7 +67,10 @@ function random_uniform_int(min,max,top){
 
 }
 
-let random = random_uniform_int(1,10,3);
+var random = random_uniform_int(1,10,3);
+
+
+
 
 function restart_game(){
     game_active = true;
@@ -76,6 +79,18 @@ function restart_game(){
     set_next_number();
     update_display(JSON.parse(JSON.stringify(game_state)));
 }
+
+
+
+function set_difficulty(){
+    //this.stopPropagation();
+    random.top = this.value;
+    console.log(this.value);
+    restart_game();
+  }
+
+
+
 
 
 // function sleep(milliseconds) {
@@ -383,6 +398,9 @@ document.querySelectorAll('#game--restart').forEach(button => button.addEventLis
 //document.querySelector('#game--restart').addEventListener('click', restart_game);
 document.querySelector('#game--help').addEventListener('click', on);
 document.querySelector('#game--level').addEventListener('click', on);
+
+//difficulty slider
+document.getElementById("difficulty--slider").addEventListener("input", set_difficulty);
 
 
 
