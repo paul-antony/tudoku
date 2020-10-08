@@ -68,7 +68,7 @@ function random_uniform_int(min,max,top){
 
 }
 
-var random = random_uniform_int(1,10,1);
+var random = random_uniform_int(1,10,2);
 
 
 
