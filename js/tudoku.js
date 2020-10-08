@@ -55,6 +55,7 @@ function random_uniform_int(min,max,top){
                 occur[i] = occur[i] - minimum;
             }
         }
+        console.log("aa",min,max,top,occur,temp,val);
         return val;
     }
 
@@ -67,7 +68,7 @@ function random_uniform_int(min,max,top){
 
 }
 
-var random = random_uniform_int(1,10,3);
+var random = random_uniform_int(1,10,1);
 
 
 
@@ -84,8 +85,8 @@ function restart_game(){
 
 function set_difficulty(){
     //this.stopPropagation();
-    random.top = this.value;
     console.log(this.value);
+    random.top = this.value;
     restart_game();
   }
 
@@ -364,7 +365,7 @@ function board_check(row,col){
 
 function handle_click(clickedCellEvent) {
     const clicked_cell = clickedCellEvent.target;
-    let column_id = parseInt(clicked_cell.getAttribute('data-col-index'));
+    let column_id = parseInt(clicked_cell.getAttribute('data-cell-index')%10);
 
     if (game_active === false) {
         return;
@@ -383,12 +384,11 @@ function handle_click(clickedCellEvent) {
     //console.log(JSON.parse(JSON.stringify(game_state)));
     game_active = false;
     board_check(row_id,column_id);
-    set_next_number();
 }
 
 update_display(JSON.parse(JSON.stringify(game_state)));
 set_next_number();
-document.querySelectorAll('.game--column').forEach(cell => cell.addEventListener('click', handle_click));
+document.querySelectorAll('.cell').forEach(cell => cell.addEventListener('click', handle_click));
 
 
 document.querySelectorAll('#game--restart').forEach(button => button.addEventListener('click', restart_game));
