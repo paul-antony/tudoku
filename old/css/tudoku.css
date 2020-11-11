@@ -1,0 +1,241 @@
+
+body{
+    background-color: #A8D0E6;
+
+    /* remove selection*/
+    user-select: none; /* supported by Chrome and Opera */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    
+}
+section {
+    text-align: center;
+}
+
+
+
+.game--title{
+    font-family: rezland;
+    margin-top: 20px;
+    margin-bottom: 10;
+    font-size: 70px;
+    text-shadow: 3px 0px 2px #90877F;
+}
+.game--board {
+  display: grid;
+  grid-template-columns: repeat(9, 1fr);
+  grid-template-rows: repeat(9, 1fr);
+  grid-gap: min(2px, calc(2vw / 10));
+  width: min(480px,98vw);
+  height: min(480px,98vw);
+  margin: auto auto; 
+   
+}
+
+
+.cell {
+
+
+    
+  border: 1px solid #979595d0;
+  border-radius: 15%;
+
+  font-family: "Permanent Marker", cursive;
+  font-size: min(30px,7.1vw); 
+  background-color: white;
+  padding: 0%;
+  
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+
+
+}
+
+.cell--active{
+    border: 1px solid #1a1919;
+    box-shadow: 0 0 0 1px #1a1919;
+
+}
+
+.cell--del{
+    background-color: firebrick;
+}
+
+
+.next--number {
+    font-family: "Permanent Marker", cursive;
+    width: 50px;
+    height: 50px;
+    border: 1px solid #1a1919;
+    box-shadow: 0 0 0 1px #1a1919;
+    border-radius: 15%;
+    line-height: 50px;
+    font-size: 50px;
+    margin: 20px auto;
+    background-color: white;
+
+
+}
+
+.game--column > .cell {
+    pointer-events: none;
+  }
+
+
+
+
+
+
+.btn {
+    background: #EEE;
+    border: 1px solid #B4B4B4;
+    position: relative;
+    box-sizing: border-box;
+    width: 50px;
+    height: 50px;
+    display: inline-block;
+    border-radius: .4em;
+    cursor: pointer;
+    box-shadow: 0 1px 1px rgba(0,0,0,.2),
+                0 4px 0 0 rgba(255,255,255,.7) inset,
+                3px 3px rgba(0,0,0,.5);
+    text-align: center;
+    line-height: 50px;
+    color: #333;
+    font-family: Consolas;
+    font-weight: 700;
+    overflow: hidden;
+    font-size: 1.4em;
+    transition-duration: .2s;
+    user-select: none;
+    -webkit-user-select: none;
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+.btn:hover {
+    filter: brightness(95%);
+}
+
+.btn.focus {
+    filter: brightness(85%);
+    box-shadow: 0 4px 1px rgba(0,0,0,.2) inset,
+                1px 1px rgba(0,0,0,0.5);
+}
+
+.btn:active{
+    /* filter: brightness(80%); */
+    box-shadow: 0 -1px 1px rgba(0,0,0,.2),
+                0 -4px 0 0 rgba(255,255,255,.7) inset,
+                3px -3px rgba(0,0,0,.5);
+}
+
+
+
+.overlay {
+    position: fixed; /* Sit on top of the page content */
+    display: none; /* Hidden by default */
+    width: 100%; /* Full width (cover the whole page) */
+    height: 100%; /* Full height (cover the whole page) */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.5); /* Black background with opacity */
+    z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
+    cursor: pointer; /* Add a pointer on hover */
+  }
+
+
+  .overlay--block{
+    border-radius: 3%;
+    margin: min(90px,5vw) auto;
+    width: min(500px,90vw);
+    height: min(500px,90vh);
+    padding: 5px;
+
+    
+    box-shadow: 0 0 0 3px #5c5959af;
+    border: 5px solid #A8D0E6;
+    background-color: azure;
+
+  }
+
+  .overlay--text{
+    background-color: white; 
+    width: 490px;
+    margin: 0 auto;
+    height: 450px;
+    border-radius: 3%;
+    margin-top: 20px;
+
+
+
+  }
+
+  .btn > .icon-question {
+    pointer-events: none;
+  }
+
+
+  
+  .btn > .icon-close {
+    pointer-events: none;
+  }
+
+  
+  .btn > .icon-repeat {
+    pointer-events: none;
+  }
+
+  
+  .btn > .icon-sliders {
+    pointer-events: none;
+  }
+
+
+
+  
+  
+  .slider {
+    -webkit-appearance: none;
+        width: 90%;
+        height: 15px;
+        border-radius: 5px;
+        background: gray;
+        outline: none;
+        opacity: 0.7;
+        -webkit-transition: opacity .15s ease-in-out;
+        transition: opacity .15s ease-in-out;
+        margin-top: 5px;
+        margin-bottom: 5px;
+    }
+    
+    .slider:hover {
+      opacity: 1;
+    }
+    
+    .slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: #A8D0E6;
+      box-shadow: 0 1px 1px rgba(0,0,0,.2),
+      3px 3px rgba(0,0,0,.5);
+      cursor: pointer;
+    }
+    
+    .slider::-moz-range-thumb {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: #A8D0E6;
+      border: .5px solid black;
+      box-shadow: 0 0 0 1px #1a1919;
+      cursor: pointer;
+    }
