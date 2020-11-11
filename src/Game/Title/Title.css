@@ -1,0 +1,17 @@
+
+  @font-face { 
+    font-family: rezland; 
+    src: url('./REZ.ttf'); 
+}
+
+
+
+
+
+.game--title{
+    font-family: rezland;
+    margin-top: 20px;
+    margin-bottom: 10;
+    font-size: 70px;
+    text-shadow: 3px 0px 2px #90877F;
+}
