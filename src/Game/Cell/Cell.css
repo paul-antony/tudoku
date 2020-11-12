@@ -1,0 +1,28 @@
+.cell {
+
+
+    
+    border: 1px solid #979595d0;
+    border-radius: 15%;
+  
+    font-family: "Permanent Marker", cursive;
+    font-size: min(30px,7.1vw); 
+    background-color: white;
+    padding: 0%;
+    
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+  
+  
+  }
+  
+  .cell--active{
+      border: 1px solid #1a1919;
+      box-shadow: 0 0 0 1px #1a1919;
+  
+  }
+  
+  .cell--del{
+      background-color: firebrick;
+  }
