@@ -1,0 +1,10 @@
+.game--board {
+    display: grid;
+    grid-template-columns: repeat(9, 1fr);
+    grid-template-rows: repeat(9, 1fr);
+    grid-gap: min(2px, calc(2vw / 10));
+    width: min(480px,98vw);
+    height: min(480px,98vw);
+    margin: auto auto; 
+     
+  }
