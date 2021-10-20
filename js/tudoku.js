@@ -3,7 +3,7 @@ let game_active = true;
 
 let game_state = Array(9).fill().map(() => Array(9).fill(0));
 
-
+let score = 0;
 let col_top_index = [8,8,8,8,8,8,8,8,8];
 
 let next_number = 0;
@@ -68,7 +68,7 @@ function random_uniform_int(min,max,top){
 
 }
 
-var random = random_uniform_int(1,10,1);
+var random = random_uniform_int(1,10,2);
 
 
 
@@ -85,7 +85,7 @@ function restart_game(){
 
 function set_difficulty(){
     //this.stopPropagation();
-    console.log(this.value);
+    // console.log(this.value);
     random.top = this.value;
     restart_game();
   }
@@ -134,7 +134,7 @@ function check_row(row){
         }
     }
     
-    console.log("row check true",row);
+    // console.log("row check true",row);
     //set delete value to -ve
     for (let i = 0; i < 9; i++){
         game_state[row][i] = -1 * Math.abs(game_state[row][i]);
@@ -164,7 +164,7 @@ function check_col(col){
         }
     }
 
-    console.log("col check true",col);
+    // console.log("col check true",col);
     //set delete value to -ve
     for (let i = 0; i < 9; i++){
         game_state[i][col] = -1 * Math.abs(game_state[i][col]);
@@ -200,7 +200,7 @@ function check_box(row,col){
             return false;
         }
     }
-    console.log("square check true",row,col);
+    // console.log("square check true",row,col);
     //set delete value to -ve
     for (let i = 0; i < 3; i++){
         for (let j = 0; j < 3; j++){
@@ -220,6 +220,7 @@ function check_game_over(){
     }
     if (flag === true){
         game_active = false;
+        document.getElementById("game--score").innerHTML = score;
         document.getElementById("game--end--overlay").style.display = "block";
     }
 }
@@ -384,6 +385,7 @@ function handle_click(clickedCellEvent) {
     //console.log(JSON.parse(JSON.stringify(game_state)));
     game_active = false;
     board_check(row_id,column_id);
+    score += 1;
 }
 
 update_display(JSON.parse(JSON.stringify(game_state)));
